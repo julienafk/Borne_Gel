@@ -1,0 +1,61 @@
+API documentation
+
+°°
+°°Acquérir niveau gel et batterie
+°°
+
+POST =>
+
+*Donnée de l'arduino
+--127.0.0.1/ProjetBorne/api/nvGelBatterie
+{
+	ESP : 1,
+	lieu :"Gr01",
+	nivGel : donnée gel,
+	nivBatterie : 100 
+}
+
+°°
+°°Affichage et Alerte
+°°
+
+* Données des bornes
+--127.0.0.1/ProjetBorne/api/donnee
+[{
+	idborne: 1,
+	lieu : "Gr01",
+	niveauGEL: Distance,
+	niveauBATTERIE : 100 
+},
+{
+	idborne: 1,
+	lieu : "Gr01",
+	niveauGEL: Distance,
+	niveauBATTERIE : 100 
+},
+...]
+
+********************
+--127.0.0.1/ProjetBorne/api/Verification
+* : Verification
+{
+	Identification : true // ou false
+}
+
+********************
+
+* : BDD envoie borne assigné de l'agent à L'API
+--127.0.0.1/ProjetBorne/api/borneAgent/1
+{
+	borneAssignee : 1// id borne
+}
+
+********************
+* : Log
+--127.0.0.1/ProjetBorne/api/log
+{
+	id: 1,
+	connexion : login,
+	derniereConnexion: date,
+	changementEtatBorne: date
+}

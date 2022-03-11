@@ -1,0 +1,94 @@
+API documentation
+°°Acquérir niveau gel et batterie
+GET =>
+*Envoie des donnée de l'arduino vers API
+127.0.0.1/ProjetBorne/api/nvGelBatterie
+{
+	ESP : 1,
+	lieu :" Gr01",
+	nivGel : donnée gel,
+	nivBatterie : 100 
+}
+
+°°Affichage et Alerte
+*Enregistrement des données
+	BDD : (requete SQl)
+
+* 1:Demande des donnée a l'API
+	BDD : (requete SQl)
+
+* 2:Envoie des données de la BDD a l'API
+  127.0.0.1/ProjetBorne/api/donnee
+{
+	idborne: 1,
+	lieu : "Gr01",
+	niveauGEL: Distance,
+	niveauBATTERIE : 100 
+}
+* 3:Envoie des données de l'API au WEB/Android
+  127.0.0.1/ProjetBorne/web/traitement.php
+{
+	idborne: 1,
+	lieu : "Gr01",
+	niveauGEL: donnée gel,
+	niveauBATTERIE : 100 
+}
+* 4:Surveillance
+		if(nivGel<? || nivBatterie<?){
+			Envoie alert WEB/Android
+		}
+* 10:Demande verification login mdp
+  127.0.0.1/ProjetBorne/web/api?login=****&mdp=*****
+
+* 11: L'API demande a la BDD la correspondance
+  BDD : (requete SQl)
+
+* 12: Réponse de la BDD
+  127.0.0.1/ProjetBorne/api/verification
+{
+	Identification : true // ou false
+}
+
+* 13: Réponse de l'API aux WEB/Android
+{
+	Identification : true // ou false
+}
+
+* 14: Web demande borne assigné de l'agent à L'API
+  127.0.0.1/ProjetBorne/api/borneAgent
+
+* 15: API demande borne assigné de l'agent à BDD
+  BDD : (requete SQl)
+
+* 16: BDD envoie borne assigné de l'agent à L'API
+  127.0.0.1/ProjetBorne/api/borneAgent
+{
+	borneAssignee : 1// id borne
+}
+  BDD : (requete SQl) // pour seulement demander les bornes assignées
+
+* 17: L'API envoie les bornes assignées aux WEB/Android
+{
+	idborne: 1,
+	lieu : "Gr01",
+	niveauGEL: donnée gel,
+	niveauBATTERIE : 100 
+}
+
+---
+* 20: WEB/Android envoie log à API
+127.0.0.1/ProjetBorne/api/log
+{
+	id: 1,
+	connexion : login,
+	derniereConnexion: date,
+	changementEtatBorne: date
+}
+
+* 21: API envoie log à BDD
+{
+	id: 1,
+	connexion : login,
+	derniereConnexion: date,
+	changementEtatBorne: date
+}
