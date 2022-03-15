@@ -1,0 +1,16 @@
+{
+	"Borne": [
+		{
+			"idborne": 1,
+			"lieu": "Gr01",
+			"niveauGEL": 45,
+			"niveauBATTERIE": 100
+		},
+		{
+			"idborne": 2,
+			"lieu": "Gr02",
+			"niveauGEL": 62,
+			"niveauBATTERIE": 10
+		}
+	]
+}

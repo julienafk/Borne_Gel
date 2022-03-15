@@ -1,0 +1,19 @@
+{
+	"Users":
+    [
+        {
+            "id": 1,
+            "email" : "Jacquelin@email.com",
+            "mdp": "Jacquelin45@",
+            "prenom" : "Jacquelin",
+            "nom": "Dupont"
+        },
+        {
+            "id": 2,
+            "email" : "Jacque@email.com",
+            "mdp": "Jacque45@",
+            "prenom" : "Jacquel",
+            "nom": "Duponton"
+        }
+    ]
+}
