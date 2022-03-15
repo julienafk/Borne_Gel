@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Information Securite Important(cest une blague ici cest les bornes</string>
+    <string name="login_form_title">Login</string>
+    <string name="login_form_username">Username</string>
+    <string name="login_form_password">Password</string>
+    <string name="login_form_button">Login</string>
+
+
+
+</resources>
