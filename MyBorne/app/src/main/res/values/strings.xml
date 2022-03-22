@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">My Borne</string>
-    <string name="login_form_title">Login</string>
-    <string name="login_form_username">Username</string>
-    <string name="login_form_password">Password</string>
-    <string name="login_form_button">Login</string>
-
-
-</resources>
