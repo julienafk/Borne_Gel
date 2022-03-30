@@ -39,7 +39,7 @@ int Distance = ultrasonic.read();
     delay(3500);// temps d'attente avant redistrubution
   }
   delay(1000);*/
-*/  
+
     if(Distance < 2){
       Serial.print("**Rempli**");
       Serial.println(Distance);
@@ -57,7 +57,7 @@ int Distance = ultrasonic.read();
       Serial.println(Distance);
     }
   delay(1000);
-*/
+
 //******************************************************************************************************
 
 DynamicJsonDocument doc(204);
