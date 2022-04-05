@@ -7,12 +7,13 @@ API documentation
 POST =>
 
 *Donnée de l'arduino
---127.0.0.1/ProjetBorne/api/nvGelBatterie
+--127.0.0.1/ProjetBorne/api/borne?id=1&nivGel=100&nivBatterie=98
 {
-	ESP : 1,
-	lieu :"Gr01",
-	nivGel : donnée gel,
-	nivBatterie : 100 
+	idBorne: 1,
+	salle: "GR01",
+	etablissement: "LJR",
+	nivGel: 100,
+	nivBatterie: 98
 }
 
 °°
@@ -20,19 +21,21 @@ POST =>
 °°
 
 * Données des bornes
---127.0.0.1/ProjetBorne/api/donnee
-[{
-	idborne: 1,
-	lieu : "Gr01",
-	niveauGEL: Distance,
-	niveauBATTERIE : 100 
+--127.0.0.1/ProjetBorne/api/bornes
+{
+	idBorne: 1,
+	salle: "GR01",
+	etablissement: "LJR",
+	nivGel: 100,
+	nivBatterie: 100
 },
 {
-	idborne: 1,
-	lieu : "Gr01",
-	niveauGEL: Distance,
-	niveauBATTERIE : 100 
-},
+	idBorne: 1,
+	salle: "GR01",
+	etablissement: "LJR",
+	nivGel: 100,
+	nivBatterie: 100
+}
 ...]
 
 ********************
