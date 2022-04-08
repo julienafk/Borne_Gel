@@ -5,6 +5,7 @@
     <string name="login_form_password">Mot de passe</string>
     <string name="login_form_button">Connexion</string>
     <string name="return_form_button">Retour</string>
+    <string name="mail">Affichage du mail</string>
 
 
 </resources>

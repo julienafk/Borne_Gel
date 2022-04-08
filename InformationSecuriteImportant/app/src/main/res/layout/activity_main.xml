@@ -57,9 +57,10 @@
                     android:textSize="22sp" />
 
                 <EditText
-                    android:id="@+id/activity_main_usernameEditText"
+                    android:id="@+id/activity_main_idEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="#F44336"
                     android:inputType="text" />
 
                 <TextView
@@ -69,7 +70,7 @@
                     android:textSize="22sp" />
 
                 <EditText
-                    android:id="@+id/activity_main_passwordEditText"
+                    android:id="@+id/activity_main_mdpEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
@@ -80,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/login_form_button"
                     android:textSize="22sp" />
-                "
+
 
             </LinearLayout>
 
