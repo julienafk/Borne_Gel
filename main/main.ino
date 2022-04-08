@@ -44,17 +44,20 @@ int Distance = ultrasonic.read();
       Serial.print("**Rempli**");
       Serial.println(Distance);
     }
-     if(Distance > 2 && Distance < 10){
+     else if(Distance > 2 && Distance < 10){
       Serial.print("**Bien**");
       Serial.println(Distance);
     }
-     if(Distance > 10 && Distance < 15){
+     else if(Distance > 10 && Distance < 15){
       Serial.print("**Niveau Bas**");
       Serial.println(Distance);
     }
-     if(Distance > 15){
+     else if(Distance > 15){
       Serial.print("**Attention**");
       Serial.println(Distance);
+    }
+    else{
+      Serial.print("**TROP LOIN**");
     }
   delay(1000);
 
