@@ -65,8 +65,8 @@ int Distance = ultrasonic.read();
 
 DynamicJsonDocument doc(204);
   doc["ESP"] = 1;
-  doc["nivBatterie"] = 90;
-  doc["nivGel"] = "75%";
+  doc["nivBatterie"] = nivBat;
+  doc["nivGel"] = Distance;
 String MonJson;
 serializeJson(doc, MonJson);
 
@@ -75,7 +75,7 @@ int Statut = http.GET();
 Serial.print("Statut en attente ...");
 while(Statut != 200) 
 {
-  Serial.print("_._");// Affiche des points _._ tant que statut n'est pas 200
+  Serial.print(".");// Affiche des points _._ tant que statut n'est pas 200
   delay(50);
 }
 Serial.println("\n");
