@@ -62,7 +62,7 @@ int Distance = ultrasonic.read();
   delay(1000);
 
 //******************************************************************************************************
-
+//best site ptsv2.com
 DynamicJsonDocument doc(204);
   doc["ESP"] = 1;
   doc["nivBatterie"] = nivBat;
@@ -70,7 +70,7 @@ DynamicJsonDocument doc(204);
 String MonJson;
 serializeJson(doc, MonJson);
 
-http.begin(client, "**API-link**");//best site ptsv2.com
+http.begin(client, "**API-link**");
 int Statut = http.GET();
 Serial.print("Statut en attente ...");
 while(Statut != 200) 
