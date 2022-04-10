@@ -75,7 +75,7 @@ int Statut = http.GET();
 Serial.print("Statut en attente ...");
 while(Statut != 200) 
 {
-  Serial.print(".");// Affiche des points _._ tant que statut n'est pas 200
+  Serial.print(".");// Affiche des points . tant que statut n'est pas 200
   delay(50);
 }
 Serial.println("\n");
