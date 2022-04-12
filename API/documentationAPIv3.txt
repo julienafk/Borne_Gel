@@ -1,0 +1,48 @@
+API documentation
+
+POST =>
+
+*Donnée de la borne
+--127.0.0.1/ProjetBorne/api/updateBorne?id=<int>&nivGel=<int>&nivBat=<int>
+{
+	"id":"1",
+	"nivGel":"55",
+	"nivBat":"56"
+}
+------------------------------------
+
+* Données des bornes
+--127.0.0.1/ProjetBorne/api/donnee
+[
+	{
+		"id":"1",
+		"nivGel":"55",
+		"nivBat":"56",
+		"salle":"GR011",
+		"etablissement":"Jean Rostand"
+	},
+	{
+		"id":"2",
+		"nivGel":"58",
+		"nivBat":"22",
+		"salle":"HT02",
+		"etablissement":"test"
+	}
+]
+
+------------------------------
+* Vérification de la connexion
+--127.0.0.1/ProjetBorne/api/connexion?email=<string>&password=<string>
+* : Verification
+{
+	"identification":true ou false
+}
+
+------------------------------
+* Envoie borne assigné de l'agent à L'API
+--http://51.210.151.13/btssnir/projets2022/bornegel/api/api/agent?idAgent=1
+{
+	"id":"1",
+	"agent":"Julien",
+	"bornes":["1","2"]
+}
