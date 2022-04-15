@@ -1,13 +1,13 @@
 package com.example.informationsecuriteimportant;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import java.io.Serializable;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Build;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,14 +15,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.SharedPreferences;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,32 +43,57 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.activity_main_mdpEditText);
         loginButton = findViewById(R.id.activity_main_loginButton);
         logadm = findViewById(R.id.LogAdmin);
+        final boolean[]succes = new boolean[1] ;
+        final int[] grade = new int[1];
 
-        logadm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent activity_main2 = new Intent(getApplicationContext(), MainActivity3.class);
-//                getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(activity_main2);
-                finish();
-
-            }
-
-
-        });
-
-                loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //Debut GET
+                        //Debut GET https://874c8381-7dbc-4718-85c8-1cde681efe65.mock.pstmn.io/connexion
                         String jsmail = email.getText().toString();
                         String jsmdp = password.getText().toString();
-                        String url = "https://874c8381-7dbc-4718-85c8-1cde681efe65.mock.pstmn.io/connexion?email=" + jsmail + "&password=" + jsmdp;
+                        String url = "http://51.210.151.13/btssnir/projets2022/fablab/api/connexion.php?mail=" + jsmail + "&password=" + jsmdp;
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
                                         Toast.makeText(MainActivity.this, response.trim(), Toast.LENGTH_SHORT).show();
+                                        if(response!=null){
+                                            JSONObject jObject = null;
+                                            try {
+                                                jObject = new JSONObject(response);
+                                                succes[0] = jObject.getBoolean("succes");
+                                                grade[0] = jObject.getInt("grade");
+                                                System.out.println("test : "+ succes[0]);
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                        if(succes[0]==true)
+                                        {
+                                            if(grade[0]==4)
+                                            {
+                                                Intent activity_main2= new Intent(MainActivity.this, MainActivity2.class);
+                                                activity_main2.putExtra("mail",jsmail);
+                                                startActivity(activity_main2);
+                                            }
+
+
+
+
+                                           else
+                                            {
+                                                Toast.makeText(MainActivity.this, "erreur", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+                                        else
+                                        {
+                                            Toast.makeText(MainActivity.this, "Email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
+                                        }
+                                        Toast.makeText(MainActivity.this, url.toString(), Toast.LENGTH_SHORT).show();
+
                                     }
                                 },
                                 new Response.ErrorListener() {
@@ -77,48 +102,35 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
-//                {
-//                    @Override
-//                    protected Map<String, String> getParams() {
-//                        Map<String, String> params = new HashMap<String, String>();
-//                        params.put("usernameEditText",user );
-//                        params.put("passwordEditText",mdp );
-//
-//                        return params;
-//
-//                    }
-//                };
+
                         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
                         requestQueue.add(stringRequest);
-                        //Fin Get
+                        // Fin GET
 
-
-
-                        if (email.getText().length() > 0 && password.getText().length() > 0) {
-                           // String toastMessage = "identifiant: " + email.getText().toString() + ", Mot De Passe: " + password.getText().toString();
+                        if (email.getText().length() < 5 && password.getText().length() < 1) {
+                            String toastMessage ="identifiant: " + email.getText().toString() + ", Mot De Passe: " + password.getText().toString();
                            // Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
-                            Intent activity_main2 = new Intent(getApplicationContext(), MainActivity2.class);
-                            //getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            activity_main2.putExtra("nom", jsmail);
-                            startActivity(activity_main2);
-                            finish();
-
+//                            Intent activity_main2 = new Intent(getApplicationContext(), MainActivity2.class);
+//                            //getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                         }
-
-
                         else {
                             String toastMessage = "Veuillez entrer un identifiant et un mot de passe";
                             Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
 
-
-
-
                 });
 
-
+        logadm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activity_main2 = new Intent(getApplicationContext(), MainActivity3.class);
+//                getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(activity_main2);
+                finish();
+            }
+        });
 
     }
 }

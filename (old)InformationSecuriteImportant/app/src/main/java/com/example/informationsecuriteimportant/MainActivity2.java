@@ -19,7 +19,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Recup de la variable de la page 1
         affichagePN = (TextView)findViewById(R.id.PrenomNom);
-        String nom = getIntent().getStringExtra("mail");
+        String nom = getIntent().getStringExtra("nom");
 
         affichagePN.setText(nom);
         // Fin recup de la variable
