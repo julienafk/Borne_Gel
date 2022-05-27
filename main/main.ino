@@ -58,7 +58,7 @@ void loop() {
     valGel = Distance;
   }
   else if (Distance > 2 && Distance < 10) {
-    Serial.print("**Bien**");
+    Serial.print("**Niveau Bien**");
     Serial.println(Distance);
     valGel = Distance;
   }
@@ -68,7 +68,7 @@ void loop() {
     valGel = Distance;
   }
   else if (Distance > 15) {
-    Serial.print("**Attention**");
+    Serial.print("**Niveau Alerte**");
     Serial.println(Distance);
     valGel = Distance;
   }
