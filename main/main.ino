@@ -87,7 +87,7 @@ void loop() {
   String MonJson;
   serializeJson(doc, MonJson);
 
-  http.begin(client, "**API-link**");//best site ptsv2.com
+  http.begin(client, "**API-link**");//Connection à L'API
   int Statut = http.GET();
   Serial.print("Statut en attente ...");
   while (Statut != 200) {
@@ -96,11 +96,11 @@ void loop() {
   }
   Serial.println("\n");
   Serial.println("**ENVOYER**");
-  http.POST(MonJson);
-  DeserializationError error = deserializeJson(doc, http.getString());
+  http.POST(MonJson);//Envoie du JSON
+  DeserializationError error = deserializeJson(doc, http.getString());// on reçoit la réponse de l'API sous JSON
   if (error) {
     Serial.print("deserializeJson() failed: ");
-    Serial.println(error.c_str());
+    Serial.println(error.c_str());// on affiche une erreur
     return;
   }
   if (doc["succes"] == true) {
@@ -120,3 +120,5 @@ void loop() {
   return;
   }
   Serial.println(doc["heure"]);//heure API*/
+//best site ptsv2.com//best site ptsv2.com
+//best site ptsv2.com
