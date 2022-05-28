@@ -97,10 +97,10 @@ void loop() {
   Serial.println("\n");
   Serial.println("**ENVOYER**");
   http.POST(MonJson);//Envoie du JSON
-  DeserializationError error = deserializeJson(doc, http.getString());// on reçoit la réponse de l'API sous JSON
+  DeserializationError error = deserializeJson(doc, http.getString());// Réponse de l'API sous JSON et on deserialize
   if (error) {
     Serial.print("deserializeJson() failed: ");
-    Serial.println(error.c_str());// on affiche une erreur
+    Serial.println(error.c_str());// On affiche une erreur
     return;
   }
   if (doc["succes"] == true) {
