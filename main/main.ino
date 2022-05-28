@@ -15,8 +15,8 @@ const char* password = "ml$@0931584S";
 
 int getBattery() {
   float bat = analogRead(BATTERYPIN);
-  int minValue = (4095 * TensionMin) / 3; //ESP32
-  int maxValue = (4095 * TensionMax) / 3; //ESP32
+  int minValue = (4095 * TensionMin) / 3;
+  int maxValue = (4095 * TensionMax) / 3;
   bat = ((bat - minValue) / (maxValue - minValue)) * 100; //mettre en pourcentage
   if (bat > 100) { //max is 100%
     bat = 100;
