@@ -12,7 +12,6 @@ const float TensionMax = 3.3; //tension max
 const char* ssid = "Eleves";  // Mettre votre SSID Wifi
 const char* password = "ml$@0931584S";
 
-
 int getBattery() {
   float bat = analogRead(BATTERYPIN);
   int minValue = (4095 * TensionMin) / 3;
@@ -49,8 +48,8 @@ void loop() {
   
    esp_sleep_enable_timer_wakeup(5000000);//sleep mode oendant 5 secondes
    //esp_light_sleep_start();
-  //**********************************************************************************************
   
+  //**********************************************************************************************
   int Distance = ultrasonic.read();
   int valGel = 0;
 
