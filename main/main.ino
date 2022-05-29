@@ -46,9 +46,13 @@ void setup() {
 
 }
 void loop() {
-   //esp_sleep_enable_timer_wakeup(5000000);
+  
+   esp_sleep_enable_timer_wakeup(5000000);//sleep mode oendant 5 secondes
+  
+  
   //esp_light_sleep_start();
   //**********************************************************************************************
+  
   int Distance = ultrasonic.read();
   int valGel = 0;
 
