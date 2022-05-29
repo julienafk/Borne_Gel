@@ -6,7 +6,7 @@
 WiFiClient client;
 HTTPClient http;
 const int BATTERYPIN = 34; //pin de la batterie
-const float TensionMin = 0; //tension min
+const float TensionMin = 1.5; //tension min
 const float TensionMax = 3.3; //tension max
 
 const char* ssid = "Eleves";  // Mettre votre SSID Wifi
