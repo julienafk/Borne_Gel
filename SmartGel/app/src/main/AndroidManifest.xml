@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartGel">
         <activity
+            android:name=".Comptes"
+            android:exported="false" />
+        <activity
             android:name=".Borne2Activity"
             android:exported="false" />
         <activity

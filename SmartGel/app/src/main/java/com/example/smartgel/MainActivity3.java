@@ -2,75 +2,153 @@ package com.example.smartgel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import com.example.smartgel.databinding.ActivityMain3Binding;
+import com.example.smartgel.databinding.ActivityMainBinding;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.util.ArrayList;
-import java.util.List;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity3 extends AppCompatActivity {
-//    String JSON_STRING="{\"info\":{\"succes\":\"true\",\"id\":4\",\"email\":test.agent1@test.fr\",\"mdp\":Agents\",\"prenom\":marcheA\",\"nom\":ok}}";
-//    String succes, id,email;
-//     TextView  employeeSucces, employeeID, employeeMail;
+    private Button comptesbtn;
+    ActivityMain3Binding binding;
+    ArrayList<String> bornesList;
+    ArrayAdapter<String> listAdapter;
+    Handler mainHandler = new Handler();
+    ProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
-//
-//        ListView listView = findViewById(R.id.list_borne);
-//
-//        List<String> list = new ArrayList<>();
-//        for (int i=1;i<=nbrBorne;i++)
-//        {
-//            list.add("Borne".i);
-//        }
-//
-//
-//
-//        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, list);
-//        listView.setAdapter(arrayAdapter);
+        binding = ActivityMain3Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initializeBornesList();
+
+        binding.actubtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new actudata().start();
+            }
+        });
+
+        binding.comptesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent comptes = new Intent(getApplicationContext(),Comptes.class);
+                startActivity(comptes);
+
+            }
+        });
 
     }
+
+    private void initializeBornesList() {
+        bornesList = new ArrayList<>();
+        listAdapter  = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,bornesList);
+        binding.bornesList.setAdapter(listAdapter);
+    }
+
+    class actudata extends Thread{
+        String data = "";
+
+        @Override
+        public void run() {
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog = new ProgressDialog(MainActivity3.this);
+                    progressDialog.setMessage("Fetching Data");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+                }
+            });
+
+//https://api.npoint.io/51ea996647df8356b1ee https://www.npoint.io/   http://51.210.151.13/btssnir/projets2022/bornegel/api/api/bornes.php
+            try {
+                URL url = new URL("http://51.210.151.13/btssnir/projets2022/bornegel/api/bornes.php");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+
+                while ((line = bufferedReader.readLine())!= null){
+                    data = data + line;
+                }
+
+                if (!data.isEmpty()){
+                    JSONObject jsonObject  = new JSONObject(data);
+                    JSONArray bornes = jsonObject.getJSONArray("Bornes");
+                    bornesList.clear();
+
+
+
+                    for (int i =0;i< bornes.length();i++){
+
+                        JSONObject ids = bornes.getJSONObject(i);
+                        String id = "Borne N° " + ids.getString("id");
+                        bornesList.add(id );
+
+                        JSONObject nivGels = bornes.getJSONObject(i);
+                        String nivGel = "Niveau de gel  : " + nivGels.getString("nivGel") + "\n" ;
+
+                        bornesList.add(nivGel );
+
+                        JSONObject nivBats = bornes.getJSONObject(i);
+                        String nivBat = "Niveau de batterie :  " + nivBats.getString("nivBat")+ "\n";
+                        bornesList.add(nivBat );
+
+                        JSONObject salles = bornes.getJSONObject(i);
+                        String salle = "Salle  : " + salles.getString("salle")+ "\n";
+                        bornesList.add(salle );
+
+                        JSONObject etablissements = bornes.getJSONObject(i);
+                        String etablissement = "établissement  :  " + etablissements.getString("etablissement") + "\n" + "\n";
+                        bornesList.add(etablissement );
+                    }
+
+                }
+
+
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if(progressDialog.isShowing())
+                        progressDialog.dismiss();
+                    listAdapter.notifyDataSetChanged();
+                }
+            });
+
+
+        }
+    }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-//// get the reference of TextView's
-//        employeeSucces=(TextView) findViewById(R.id.succes);
-//        employeeID=(TextView) findViewById(R.id.id);
-//        employeeMail=(TextView) findViewById(R.id.mail);
-//        try {
-//            // get JSONObject from JSON file
-//            JSONObject obj=new JSONObject(JSON_STRING);
-//            // fetch JSONObject named employee
-//            JSONObject employee=obj.getJSONObject("info");
-//            // get employee name and salary
-//            succes=employee.getString("succes");
-//            id=employee.getString("id");
-//            email=employee.getString("email");
-//            // set employee name and salary in TextView's
-//            employeeSucces.setText("Succes: "+succes);
-//            employeeID.setText("id: "+id);
-//            employeeMail.setText("mail: "+email);
-//
-//
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//}

@@ -5,10 +5,14 @@
       <map>
         <entry key="..\:/snir2/SmartGel/app/src/main/res/drawable/sm_launcher_background.xml" value="0.1" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_borne2.xml" value="0.22" />
+        <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_comptes.xml" value="0.22" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_main2.xml" value="0.22" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_main3.xml" value="0.22" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_splash_screen.xml" value="0.20416666666666666" />
+        <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/activity_test.xml" value="0.20416666666666666" />
+        <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/list_group.xml" value="0.20416666666666666" />
+        <entry key="..\:/snir2/SmartGel/app/src/main/res/layout/list_item.xml" value="0.203125" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/snir2/SmartGel/app/src/main/res/mipmap-anydpi-v26/sm_launcher_round.xml" value="0.1" />

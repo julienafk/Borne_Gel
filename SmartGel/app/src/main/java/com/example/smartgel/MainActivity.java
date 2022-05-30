@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 //Debut GET https://874c8381-7dbc-4718-85c8-1cde681efe65.mock.pstmn.io/connexion http://51.210.151.13/btssnir/projets2022/bornegel/api/api/connexion.php  http://51.210.151.13/btssnir/projets2022/fablab/api/connexion.php
                 String jsmail = email.getText().toString();
                 String jsmdp = password.getText().toString();
-                String url = "http://51.210.151.13/btssnir/projets2022/bornegel/api/api/connexion.php?email=" + jsmail + "&password=" + jsmdp;
+                String url = "http://51.210.151.13/btssnir/projets2022/bornegel/api/connexion.php?email=" + jsmail + "&password=" + jsmdp;
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                         new Response.Listener<String>() {
                             @Override
@@ -71,18 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                                 if(succes[0]==true) {
-                                    if (grade[0] == 1) {
-                                        Intent activity_main2 = new Intent(MainActivity.this, MainActivity2.class);
+/*|| grade[0] == 2 || grade[0] == 3*/    if (grade[0] == 1 ) {
+                                        Intent activity_main2 = new Intent(MainActivity.this, MainActivity3.class);
                                         activity_main2.putExtra("email", jsmail);
                                         startActivity(activity_main2);
                                         finish();
                                     } else if (grade[0] == 2) {
-                                        Intent activity_main2 = new Intent(MainActivity.this, MainActivity2.class);
+                                        Intent activity_main2 = new Intent(MainActivity.this, MainActivity3.class);
                                         activity_main2.putExtra("email", jsmail);
                                         startActivity(activity_main2);
                                         finish();
                                     } else if (grade[0] == 3) {
-                                        Intent activity_main2 = new Intent(MainActivity.this, MainActivity2.class);
+                                        Intent activity_main2 = new Intent(MainActivity.this, MainActivity3.class);
                                         activity_main2.putExtra("email", jsmail);
                                         startActivity(activity_main2);
                                         finish();
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         logadm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activity_main2 = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent activity_main2 = new Intent(getApplicationContext(), MainActivity2.class);
 //                getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(activity_main2);
                 finish();
