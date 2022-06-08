@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#4e73df">
+    android:background="@color/back">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,16 +14,16 @@
 
         <ImageButton
             android:id="@+id/LogAdmin"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            style="@android:style/Widget.Holo.Light.Button"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:background="#4e73df"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/logo_size_invert"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            style="@android:style/Widget.Holo.Light.Button"/>
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"

@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
                                         jObject = new JSONObject(response);
                                         succes[0] = jObject.getBoolean("success");
                                         grade[0] = jObject.getInt("grade");
-                                        System.out.println("test : "+ succes[0]);
-                                    } catch (JSONException e) {
+                                        } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
 

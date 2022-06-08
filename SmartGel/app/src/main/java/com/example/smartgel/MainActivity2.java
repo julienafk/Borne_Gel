@@ -49,8 +49,6 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void initializeBornesList() {
@@ -74,9 +72,9 @@ public class MainActivity2 extends AppCompatActivity {
                 }
             });
 
-//https://api.npoint.io/51ea996647df8356b1ee https://www.npoint.io/   http://51.210.151.13/btssnir/projets2022/bornegel/api/api/bornes.php
+//https://api.npoint.io/0c8748cad821dd8fd182 https://www.npoint.io/   http://51.210.151.13/btssnir/projets2022/bornegel/api/api/bornes.php
             try {
-                URL url = new URL("http://51.210.151.13/btssnir/projets2022/bornegel/api/agent.php");
+                URL url = new URL("https://api.npoint.io/0c8748cad821dd8fd182");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -88,10 +86,8 @@ public class MainActivity2 extends AppCompatActivity {
 
                 if (!data.isEmpty()){
                     JSONObject jsonObject  = new JSONObject(data);
-                    JSONArray bornes = jsonObject.getJSONArray("Bornes");
+                    JSONArray bornes = jsonObject.getJSONArray("Borne attribué");
                     bornesList.clear();
-
-
 
                     for (int i =0;i< bornes.length();i++){
 
@@ -101,7 +97,6 @@ public class MainActivity2 extends AppCompatActivity {
 
                         JSONObject nivGels = bornes.getJSONObject(i);
                         String nivGel = "Niveau de gel  : " + nivGels.getString("nivGel") + "\n" ;
-
                         bornesList.add(nivGel );
 
                         JSONObject nivBats = bornes.getJSONObject(i);

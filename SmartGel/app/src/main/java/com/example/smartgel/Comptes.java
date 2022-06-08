@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 
 import com.example.smartgel.databinding.ActivityComptesBinding;
 
@@ -55,19 +56,20 @@ public class Comptes extends AppCompatActivity {
             public void onClick(View v) {
                 Intent bornes = new Intent(getApplicationContext(),MainActivity3.class);
                 startActivity(bornes);
-
             }
         });
-
-
     }
-
     private void initializecCompteList() {
 
         comptesList = new ArrayList<>();
         listAdapter  = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,comptesList);
         binding.comptesList.setAdapter(listAdapter);
+
     }
+    ArrayAdapter adapter = new ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_list_item_1,comptesList);
+
 
 
     class actudata extends Thread{
@@ -102,8 +104,6 @@ public class Comptes extends AppCompatActivity {
                     JSONObject jsonObject  = new JSONObject(data);
                     JSONArray comptes = jsonObject.getJSONArray("Comptes");
                     comptesList.clear();
-
-
 
                     for (int i =0;i< comptes.length();i++){
 
@@ -151,6 +151,7 @@ public class Comptes extends AppCompatActivity {
                     listAdapter.notifyDataSetChanged();
                 }
             });
+
 
 
         }
