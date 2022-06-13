@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Smart Gel</string>
+    <string name="login_form_title">Bienvenue</string>
+    <string name="login_form_username">Identifiant</string>
+    <string name="login_form_password">Mot de passe</string>
+    <string name="login_form_button">Connexion</string>
+    <string name="deco_form_button">Déconnexion</string>
+    <string name="mail">Affichage du mail</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">Prenom</string>
+    <string name="grade">Grade</string>
+    <string name="email">Email</string>
+    <string name="mdp">Mot de passe</string>
+
+
+
+</resources>
