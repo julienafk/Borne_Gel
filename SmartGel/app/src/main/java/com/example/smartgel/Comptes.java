@@ -52,8 +52,16 @@ public class Comptes extends AppCompatActivity {
         binding.bornesbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent comptes = new Intent(getApplicationContext(),Comptes.class);
+                Intent comptes = new Intent(getApplicationContext(),MainActivity3.class);
                 startActivity(comptes);
+
+            }
+        });
+        binding.deco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent deco = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(deco);
 
             }
         });
@@ -98,40 +106,27 @@ public class Comptes extends AppCompatActivity {
                     JSONArray comptes = jsonObject.getJSONArray("Comptes");
                     comptesList.clear();
 
-
-
                     for (int i =0;i< comptes.length();i++){
 
-                        JSONObject ids = comptes.getJSONObject(i);
-                        String id = "ID  :  " + ids.getString("id");
-                        comptesList.add(id );
+                        JSONObject compt = comptes.getJSONObject(i);
 
-                        JSONObject noms = comptes.getJSONObject(i);
-                        String nom ="Nom  :  " + noms.getString("nom");
-                        comptesList.add(nom );
-
-                        JSONObject prenoms = comptes.getJSONObject(i);
-                        String prenom = "Prenom  :  " +  prenoms.getString("prenom");
-                        comptesList.add(prenom );
-
-                        JSONObject emails = comptes.getJSONObject(i);
-                        String email = "adresse mail  :  " +  emails.getString("email");
+                        String email = "mail  :  " +  compt.getString("email");
+                        String prenom = "Prenom  :  " +  compt.getString("prenom");
+                        String nom ="Nom  :  " + compt.getString("nom");
+                        String id = "ID  :  " + compt.getString("id");
+                        String grade = "Grade  :  " +  compt.getString("grade")+ "\n" + "\n";
                         comptesList.add(email );
-
-                        JSONObject passwords = comptes.getJSONObject(i);
-                        String password = "Password  :  " +  passwords.getString("password");
-                        comptesList.add(password );
-
-                        JSONObject grades = comptes.getJSONObject(i);
-                        String grade = "Grade  :  " +  grades.getString("grade")+ "\n" + "\n";
+                        comptesList.add(prenom );
+                        comptesList.add(nom );
+                        comptesList.add(id );
                         comptesList.add(grade );
+//                        JSONObject grades = comptes.getJSONObject(i);
+//                        String grade = "Grade  :  " +  grades.getString("grade")+ "\n" + "\n";
+//                        comptesList.add(grade );
 
                     }
 
                 }
-
-
-
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();

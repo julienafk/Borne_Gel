@@ -49,6 +49,15 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+        binding.deco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent deco = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(deco);
+
+            }
+        });
+
     }
 
     private void initializeBornesList() {
@@ -74,7 +83,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 //https://api.npoint.io/0c8748cad821dd8fd182 https://www.npoint.io/   https://874c8381-7dbc-4718-85c8-1cde681efe65.mock.pstmn.io/borneAssignee?idAgent=7'
             try {
-                URL url = new URL("https://874c8381-7dbc-4718-85c8-1cde681efe65.mock.pstmn.io/borneAssignee?idAgent=8");
+                URL url = new URL("https://874c8381-7dbc-4718-85c8-1cde681efe65.mock.pstmn.io/borneAssignee?idAgent=4");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

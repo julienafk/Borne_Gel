@@ -57,6 +57,14 @@ public class MainActivity3 extends AppCompatActivity {
 
             }
         });
+        binding.deco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent deco = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(deco);
+
+            }
+        });
 
     }
 
@@ -98,35 +106,27 @@ public class MainActivity3 extends AppCompatActivity {
                     JSONArray bornes = jsonObject.getJSONArray("Bornes");
                     bornesList.clear();
 
-
-
                     for (int i =0;i< bornes.length();i++){
 
-                        JSONObject ids = bornes.getJSONObject(i);
-                        String id = "Borne N° " + ids.getString("id");
+                        JSONObject born = bornes.getJSONObject(i);
+
+                        String id = "Borne N° " + born.getString("id");
+                        String nivGel = "Niveau de gel  : " + born.getString("nivGel") + "\n" ;
+                        String nivBat = "Niveau de batterie :  " + born.getString("nivBat")+ "\n";
+                        String salle = "Salle  : " + born.getString("salle")+ "\n";
+                        String etablissement = "établissement  :  " + born.getString("etablissement") + "\n" + "\n";
                         bornesList.add(id );
-
-                        JSONObject nivGels = bornes.getJSONObject(i);
-                        String nivGel = "Niveau de gel  : " + nivGels.getString("nivGel") + "\n" ;
-
                         bornesList.add(nivGel );
-
-                        JSONObject nivBats = bornes.getJSONObject(i);
-                        String nivBat = "Niveau de batterie :  " + nivBats.getString("nivBat")+ "\n";
                         bornesList.add(nivBat );
-
-                        JSONObject salles = bornes.getJSONObject(i);
-                        String salle = "Salle  : " + salles.getString("salle")+ "\n";
                         bornesList.add(salle );
-
-                        JSONObject etablissements = bornes.getJSONObject(i);
-                        String etablissement = "établissement  :  " + etablissements.getString("etablissement") + "\n" + "\n";
                         bornesList.add(etablissement );
+
+//                        JSONObject etablissements = bornes.getJSONObject(i);
+//                        String etablissement = "établissement  :  " + etablissements.getString("etablissement") + "\n" + "\n";
+//                        bornesList.add(etablissement );
                     }
 
                 }
-
-
 
 
             } catch (MalformedURLException e) {
