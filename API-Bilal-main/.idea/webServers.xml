@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a39fe1b3-00a3-405d-8ca0-36c3850e19cf" name="ovh" url="http://51.210.151.13/btssnir/projets2022/bornegel/api/">
+        <fileTransfer rootFolder="/home/bornegel/api" accessType="SFTP" host="51.210.151.13" port="22" sshConfigId="49c442b1-42f1-46a6-8bf0-f15de59b44b9" sshConfig="bornegel@51.210.151.13:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
